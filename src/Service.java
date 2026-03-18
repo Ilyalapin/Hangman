@@ -1,10 +1,51 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Service {
     private int counterErrors;
     private static final int MAX_ERRORS = 6;
     private String secretWord;
     private String secretWordForConsole;
+
+    private void start() {
+        List<String> missingLetters = new ArrayList<>();
+        List<String> guessedLetters = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        makeWord();
+        //       System.out.println(secretWord);                                       //Для теста.
+        while (counterErrors < MAX_ERRORS) {
+            printStateOfGame(secretWordForConsole, missingLetters);
+
+            String letter = scanner.next();
+            boolean secretWordContainsLetter = secretWord.contains(String.valueOf(letter));
+            boolean missingLettersContainsLetter = missingLetters.contains(letter);
+
+            if (Validator.isValid(String.valueOf(letter))) {
+
+                if (secretWordContainsLetter || missingLettersContainsLetter) {
+
+                    printWarning(missingLetters,guessedLetters,letter);
+                    decipherLetters(letter);
+                    guessedLetters.add(letter);
+                } else {
+                    counterErrors++;
+                    missingLetters.add(letter);
+                }
+
+                if (gameWon(secretWord,secretWordForConsole)) {
+                    printWinningMessage();
+                    break;
+                }
+                if (counterErrors == MAX_ERRORS) {
+                    printLossMessage();
+                    break;
+                }
+            }
+        }
+        counterErrors = 0;
+    }
 
     private boolean gameWon(String secretWord, String secretWordForConsole) {
         return secretWordForConsole.equals(secretWord);
