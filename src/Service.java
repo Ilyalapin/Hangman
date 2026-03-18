@@ -8,6 +8,17 @@ public class Service {
     private String secretWord;
     private String secretWordForConsole;
 
+    public void determineBehavior(String userInput) {
+        if (userInput.equals("с")) {
+            System.out.println("Поехали!");
+            start();
+        }
+        if (userInput.equals("в")) {
+            System.out.println("До свидания!");
+            System.exit(0);
+        }
+    }
+
     private void start() {
         List<String> missingLetters = new ArrayList<>();
         List<String> guessedLetters = new ArrayList<>();
