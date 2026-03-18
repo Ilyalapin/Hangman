@@ -6,6 +6,12 @@ public class Service {
     private String secretWord;
     private String secretWordForConsole;
 
+    private void makeWord() {
+        Word word = new Word();
+        secretWord = word.chooseRandomWord();
+        secretWordForConsole = "*".repeat(secretWord.length());
+    }
+
     private void printStateOfGame(String secretWordConsole, List<String> listMissingLetters) {
         System.out.println(Scaffold.draw(counterErrors));
         System.out.println("Загаданное слово: " + secretWordConsole);
