@@ -1,8 +1,17 @@
+import java.util.List;
+
 public class Service {
     private int counterErrors;
     private static final int MAX_ERRORS = 6;
     private String secretWord;
     private String secretWordForConsole;
+
+    private void printStateOfGame(String secretWordConsole, List<String> listMissingLetters) {
+        System.out.println(Scaffold.draw(counterErrors));
+        System.out.println("Загаданное слово: " + secretWordConsole);
+        System.out.println("Ошибки: " + counterErrors + " " + listMissingLetters);
+        System.out.println("Введите букву: ");
+    }
 
     private void printWinningMessage() {
         System.out.println("***************************************************");
