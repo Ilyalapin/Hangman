@@ -6,6 +6,10 @@ public class Service {
     private String secretWord;
     private String secretWordForConsole;
 
+    private boolean gameWon(String secretWord, String secretWordForConsole) {
+        return secretWordForConsole.equals(secretWord);
+    }
+
     private boolean repeatedInput(List<String> missingLetters, List<String> guessedLetters, String letter){
         return (missingLetters.contains(letter) || guessedLetters.contains(letter));
     }
