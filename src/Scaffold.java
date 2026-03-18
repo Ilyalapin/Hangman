@@ -91,4 +91,12 @@ public enum Scaffold {
         ERROR_MAP = Collections.unmodifiableMap(m);
     }
 
+    public static String draw(int counterErrors) {
+        String result = ERROR_MAP.get(counterErrors);
+        if (result == null) {
+            throw new IllegalArgumentException("Invalid number of errors: " + counterErrors);
+        }
+        return result;
+    }
+
 }
