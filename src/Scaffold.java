@@ -1,2 +1,2 @@
-public class Scaffold {
+public enum Scaffold {
 }
