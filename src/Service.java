@@ -4,6 +4,14 @@ public class Service {
     private String secretWord;
     private String secretWordForConsole;
 
+    private void printWinningMessage() {
+        System.out.println("***************************************************");
+        System.out.println("Вы выйграли!" + "\n" +
+                "Загаданное слово: " + secretWord + "\n" +
+                "Количество ошибок, допущеных во время игры: " + counterErrors);
+        System.out.println("***************************************************");
+    }
+
     private void printLossMessage() {
         System.out.println(Scaffold.SIX);
         System.out.println("***************************************************");
